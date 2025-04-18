@@ -14,9 +14,9 @@ As of this writing, this fork introduces an enhancement to the preview windows: 
 
 Further (minor) improvements may be added in future updates.
 
-* Demo video [...]
+* Demo video
 
-
+https://github.com/pablocobelli/org-xlatex/blob/main/org-xlatex-demo.mov
 
 * Examples
 
