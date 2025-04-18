@@ -3,7 +3,7 @@
 
 1.  [About org-xlatex](#org329934a)
 2.  [About this fork](#org21e8336)
-3.  [Demo video [&#x2026;]](#org2448904)
+3.  [Demo video](#org2448904)
 4.  [Examples](#org414c235)
     1.  [One-line displayed equations](#orgada7f92)
     2.  [Multiple equations in align environment](#orga869a3a)
@@ -43,6 +43,8 @@ Further (minor) improvements may be added in future updates.
 
 
 <a id="org414c235"></a>
+
+https://github.com/pablocobelli/org-xlatex/blob/main/org-xlatex-demo.mp4
 
 # Examples
 
