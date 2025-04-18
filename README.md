@@ -39,7 +39,7 @@ Further (minor) improvements may be added in future updates.
 
 <a id="org2448904"></a>
 
-# Demo video [&#x2026;]
+# Demo video 
 
 
 <a id="org414c235"></a>
