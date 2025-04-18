@@ -136,9 +136,11 @@ The package is not in any official online repository for Emacs packages. In orde
 
 Doom Emacs users can add the following:
 
+```elisp
     (package! org-xlatex
       :recipe (:host github
                :repo "pablocobelli/org-xlatex"))
+```
 
 to their configuration file `packages.el`, and run `doom sync` for the changes to take effect.
 
@@ -147,10 +149,11 @@ to their configuration file `packages.el`, and run `doom sync` for the changes t
 
 # Configuration
 
+```elisp
     (use-package! org-xlatex
       :after (org)
       :hook (org-mode . org-xlatex-mode))
-
+```
 
 <a id="org7f4b2b8"></a>
 
@@ -158,7 +161,9 @@ to their configuration file `packages.el`, and run `doom sync` for the changes t
 
 It is suggested to also specify a value for `org-xlatex-height`, setting it to a rather low value (in pixels). The actual height used in the previews would be determined as the maximum between this value and that determined by `org-xlatex`. An example of such configuration is the following:
 
+```elisp
     (setq org-xlatex-height 10)
+```
 
 which can be added under the `:config` section in the `use-package!` declaration.
 
@@ -169,6 +174,7 @@ which can be added under the `:config` section in the `use-package!` declaration
 
 The original code allows for customizing the position of floating previews. The lines below define a custom function, `org-xlatex-position-function`, which centers the previews horizontally within the frame and places them vertically below the cursor.
 
+```elisp
     (after! org-xlatex
     (setq org-xlatex-position-function
           (lambda (_xy)
@@ -193,7 +199,7 @@ The original code allows for customizing the position of floating previews. The 
                    (x (+ win-left (/ (- win-width widget-width) 2)))
                    (y (+ win-top (or cursor-y 0) (* 2 line-height))))
               (cons x y)))))
-
+```
 
 <a id="org38cb137"></a>
 
