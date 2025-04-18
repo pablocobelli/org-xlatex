@@ -17,7 +17,7 @@ Further (minor) improvements may be added in future updates.
 * Demo video
 
 #+BEGIN_EXPORT html
-<video src="org-xlatex-demo.mp4" controls width="600"></video>
+<video src="https://github.com/pablocobelli/org-xlatex/blob/main/org-xlatex-demo.mp4" controls width="600"></video>
 #+END_EXPORT
 
 * Examples
