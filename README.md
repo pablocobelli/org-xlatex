@@ -25,7 +25,7 @@ This is org-xlatex, a package that provides instant latex preview for org buffer
 
 <https://github.com/ksqsf/org-xlatex>,
 
-originally authored by user ksqsf and contributed to by user LeSuisse.
+originally authored by user [ksqsf](https://github.com/ksqsf) and contributed to by user [LeSuisse](https://github.com/LeSuisse).
 
 
 <a id="org21e8336"></a>
