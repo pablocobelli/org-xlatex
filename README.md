@@ -44,7 +44,10 @@ Further (minor) improvements may be added in future updates.
 
 <a id="org414c235"></a>
 
-https://github.com/pablocobelli/org-xlatex/blob/main/org-xlatex-demo.mp4
+
+
+https://github.com/user-attachments/assets/056d915b-6ccc-4421-b2fc-e0e8e9af3921
+
 
 # Examples
 
