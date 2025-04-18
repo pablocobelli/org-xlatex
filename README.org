@@ -16,7 +16,7 @@ Further (minor) improvements may be added in future updates.
 
 * Demo video
 
-https://github.com/pablocobelli/org-xlatex/blob/main/org-xlatex-demo.mov
+[[file:https://github.com/pablocobelli/org-xlatex/blob/main/org-xlatex-demo.mov]]
 
 * Examples
 
