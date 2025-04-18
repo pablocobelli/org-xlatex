@@ -156,7 +156,7 @@ to their configuration file `packages.el`, and run `doom sync` for the changes t
 
 ## [Optional] Custom default (minimal) height for previews
 
-It is suggested to also customize a value for `org-xlatex-height`, setting it to a rather low value (in pixels). The actual height used in the previews would be determined as the maximum between this value and that determined by `org-xlatex`. An example of such configuration is the following:
+It is suggested to also specify a value for `org-xlatex-height`, setting it to a rather low value (in pixels). The actual height used in the previews would be determined as the maximum between this value and that determined by `org-xlatex`. An example of such configuration is the following:
 
     (setq org-xlatex-height 10)
 
