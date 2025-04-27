@@ -194,6 +194,7 @@ the point is at a formula."
 The frame will be displayed when the point enters LaTeX fragments
 or environments."
   (org-xlatex--cleanup)
+  (org-xlatex--match-theme-colors)
   (when (and org-xlatex--timer (timerp org-xlatex--timer))
     (cancel-timer org-xlatex--timer))
   (setq org-xlatex--timer (run-with-idle-timer 0.1 'repeat #'org-xlatex--timer-function))
@@ -254,8 +255,7 @@ XWIDGET instance, XWIDGET-EVENT-TYPE depends on the originating xwidget."
     (cond ((eq xwidget-event-type 'javascript-callback)
            (let ((proc (nth 3 last-input-event))
                  (arg  (nth 4 last-input-event)))
-             (funcall proc arg)
-             (org-xlatex--match-theme-colors)))
+             (funcall proc arg)))
           (t (xwidget-log "unhandled event:%s" xwidget-event-type)))))
 
 (defun org-xlatex--cleanup ()
@@ -381,6 +381,7 @@ this, chances are you will see a blank preview."
   ;;                   (face-attribute 'default :foreground))) ; Obtener el color de texto
   ;;   )
   ;;
+  ;;
   (setq org-xlatex--last-frame (selected-frame))
   (org-xlatex--ensure-frame)
   (when-let ((latex (org-xlatex--latex-at-point)))
@@ -393,14 +394,11 @@ this, chances are you will see a blank preview."
   (org-xlatex--ensure-frame))
 
 (defun org-xlatex--match-theme-colors ()
-  (interactive)
-  (message "Quiero hacerlo")
   (let* ((foreground (face-foreground 'default))  ;; Primer plano (foreground) de la cara 'default'
          (background (face-background 'default))  ;; Fondo (background) de la cara 'default'
          (comando (format "sed -e 's/{{foreground}}/%s/g' -e 's/{{background}}/%s/g' %s > %s"
                           foreground background org-xlatex--html-template org-xlatex--html-output)))
-    (message "Usando foreground: %s y background: %s" foreground background)
-    (shell-command comando)))
+    (call-process-shell-command comando nil 0))
 
-(provide 'org-xlatex)
+  (provide 'org-xlatex)
 ;;; org-xlatex.el ends here
