@@ -135,6 +135,8 @@ which is controlled by `org-xlatex-frame-adaptive-size'."
 (defvar org-xlatex--xwidget nil
   "The xwidget used by org-xlatex.")
 (defconst org-xlatex--html-uri (concat "file://" (expand-file-name "org-xlatex.html" (file-name-directory (or load-file-name buffer-file-name)))))
+(defconst org-xlatex--html-template (concat "" (expand-file-name "org-xlatex-html-template.html" (file-name-directory (or load-file-name buffer-file-name)))))
+(defconst org-xlatex--html-output (concat "" (expand-file-name "org-xlatex.html" (file-name-directory (or load-file-name buffer-file-name)))))
 (defvar org-xlatex--last-latex)
 (defvar org-xlatex--last-js)
 (defvar org-xlatex--last-frame)
@@ -252,7 +254,8 @@ XWIDGET instance, XWIDGET-EVENT-TYPE depends on the originating xwidget."
     (cond ((eq xwidget-event-type 'javascript-callback)
            (let ((proc (nth 3 last-input-event))
                  (arg  (nth 4 last-input-event)))
-             (funcall proc arg)))
+             (funcall proc arg)
+             (org-xlatex--match-theme-colors)))
           (t (xwidget-log "unhandled event:%s" xwidget-event-type)))))
 
 (defun org-xlatex--cleanup ()
@@ -371,6 +374,13 @@ is due to MathJax's asynchronous typesetting process: sometimes
 the first few typesetting requests are ignored (during the
 initialization of mathjax).  Therefore, if you directly call
 this, chances are you will see a blank preview."
+
+  ;; (with-temp-file "colors.css"
+  ;;   (insert (format ".MathJax * { background: %s; color: %s; }"
+  ;;                   (face-attribute 'default :background)  ; Obtener el color de fondo
+  ;;                   (face-attribute 'default :foreground))) ; Obtener el color de texto
+  ;;   )
+  ;;
   (setq org-xlatex--last-frame (selected-frame))
   (org-xlatex--ensure-frame)
   (when-let ((latex (org-xlatex--latex-at-point)))
@@ -381,6 +391,16 @@ this, chances are you will see a blank preview."
   "Reset the internal states of `org-xlatex-mode'."
   (org-xlatex--cleanup)
   (org-xlatex--ensure-frame))
+
+(defun org-xlatex--match-theme-colors ()
+  (interactive)
+  (message "Quiero hacerlo")
+  (let* ((foreground (face-foreground 'default))  ;; Primer plano (foreground) de la cara 'default'
+         (background (face-background 'default))  ;; Fondo (background) de la cara 'default'
+         (comando (format "sed -e 's/{{foreground}}/%s/g' -e 's/{{background}}/%s/g' %s > %s"
+                          foreground background org-xlatex--html-template org-xlatex--html-output)))
+    (message "Usando foreground: %s y background: %s" foreground background)
+    (shell-command comando)))
 
 (provide 'org-xlatex)
 ;;; org-xlatex.el ends here
