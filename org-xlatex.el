@@ -398,7 +398,7 @@ this, chances are you will see a blank preview."
          (background (face-background 'default))  ;; Fondo (background) de la cara 'default'
          (comando (format "sed -e 's/{{foreground}}/%s/g' -e 's/{{background}}/%s/g' %s > %s"
                           foreground background org-xlatex--html-template org-xlatex--html-output)))
-    (call-process-shell-command comando nil 0))
+    (call-process-shell-command comando nil 0)))
 
-  (provide 'org-xlatex)
+(provide 'org-xlatex)
 ;;; org-xlatex.el ends here
